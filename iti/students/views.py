@@ -24,3 +24,7 @@ def muliplywithten(request , num):
     # num = int(num)
     return HttpResponse(f"Result===>{num*10}")
 
+
+def home(request):
+    return  render(request, 'home.html')
+

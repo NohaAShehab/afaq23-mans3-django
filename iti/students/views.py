@@ -18,3 +18,9 @@ def welcome(request):
 def sayhi(request, username):
     return HttpResponse(f'<h1 style="color:purple">  Hi {username} </h1>')
 
+
+
+def muliplywithten(request , num):
+    # num = int(num)
+    return HttpResponse(f"Result===>{num*10}")
+

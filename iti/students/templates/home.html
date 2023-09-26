@@ -1,12 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'students/css/style.css' %}">
 </head>
 <body>
     <h1 style="color: red; font-family: Tahoma"> Welcome to ITI home page </h1>
 
 <h2> Django is easy </h2>
+
+    <img src="{% static 'students/images/pic1.jpg' %}">
+<script src="{% static 'students/js/script.js' %}"></script>
 </body>
 </html>

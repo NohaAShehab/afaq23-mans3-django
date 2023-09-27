@@ -1,10 +1,27 @@
 {% extends 'students/layouts/base.html'%}
-
+{% load static %}
 
 {% block body %}
-<h2> This another content </h2>
-{% endblock %}
+<div class="bg-light">
+<h2> All courses </h2>
+<!--{{courses}}-->
 
+  {% for course in courses %}
+
+<div style="display:inline-block">
+    <div class="card" style="width: 18rem;">
+  <img src="{% static 'courses/images/'|add:course.image %}" width="200" height="200" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{course.name}}</h5>
+    <a href="{% url 'courses.show' course.id %}" class="btn btn-primary">Show</a>
+      <a href="{% url 'courses.delete' course.id %}" class="btn btn-danger">Delete</a>
+  </div>
+</div>
+    </div>
+
+   {% endfor %}
+{% endblock %}
+</div>
 {% block content %}
   <h1 > This is courses home page </h1>
 {% endblock %}

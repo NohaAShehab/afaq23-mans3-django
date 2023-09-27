@@ -1,0 +1,29 @@
+
+
+connect to database
+
+
+1- connect to postgres to create new user
+
+create user stpy23 with password 'iti';
+
+2- make user super user
+
+alter user stpy23 superuser;
+
+########################################
+
+"get data from database through model "
+
+
+use admin panel
+1- create super user
+ python manage.py createsuperuser
+
+
+ 2- add model to the admin panel?
+ goto courses --> file (admin.py)
+add these lines
+from courses.models import Course
+
+admin.site.register(Course)

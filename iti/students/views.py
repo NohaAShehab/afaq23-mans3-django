@@ -25,12 +25,20 @@ def muliplywithten(request , num):
     return HttpResponse(f"Result===>{num*10}")
 
 
-def home(request):
-    students = [
-        {"id":1, "name":'Noha', "image":"pic1.jpg"},
-        {"id": 2, "name": 'Salma', "image": "pic2.png"},
-        {"id": 3, "name": 'Norhan', "image": "pic3.png"}
+students = [
+        {"id":1, "name":'Noha', "image":"pic1.jpg", 'grade':10 },
+        {"id":2, "name":'Noha', "image":"pic2.png", "grade":20 },
+        {"id": 3, "name": 'Salma', "image": "pic3.png","grade":30},
+        {"id": 4, "name": 'Norhan', "image": "pic4.png","grade":40}
     ]
+def home(request):
+
     return  render(request, 'home.html' ,
                    context = {"name":"noha", 'students':students})
 
+
+def show(request, id):
+    stds = filter(lambda std: std["id"] == id, students)
+    # print(list(stds)[0])
+    std = list(stds)[0]
+    return  render(request, 'students/show.html', context={"student":std})

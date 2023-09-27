@@ -8,13 +8,13 @@
 
 
 <h1> Django Template engine ---> jinja2 engine </h1>
-{{name}}
+<!--{{name}}-->
 <!--{{students }}-->
 
-{% for std in students %}
-<li> {{std}} </li>
+<!--{% for std in students %}-->
+<!--<li> {{std}} </li>-->
 
-{% endfor %}
+<!--{% endfor %}-->
 
 {% for std in students %}
 <!--{{std.image}}-->
@@ -23,7 +23,7 @@
   <img src="{% static 'students/images/'|add:std.image %}" width="200" height="200" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{std.name}}</h5>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="{% url 'students.show' std.id %}" class="btn btn-primary">Show</a>
   </div>
 </div>
     </div>

@@ -27,6 +27,7 @@ urlpatterns = [
     # path('mul/<int:num>', muliplywithten, name='mul')
 
     # please include students urls here
-    path('students/', include('students.urls'))
+    path('students/', include('students.urls')),
+    path('courses/', include('courses.urls'))
 
 ]

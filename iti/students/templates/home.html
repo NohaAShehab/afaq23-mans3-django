@@ -4,6 +4,30 @@
 
 
 {% block content %}
-    <img src="{% static 'students/images/pic1.jpg' %}">
+<!--    <img src="{% static 'students/images/pic1.jpg' %}">-->
+
+
+<h1> Django Template engine ---> jinja2 engine </h1>
+{{name}}
+<!--{{students }}-->
+
+{% for std in students %}
+<li> {{std}} </li>
+
+{% endfor %}
+
+{% for std in students %}
+<!--{{std.image}}-->
+<div style="display:inline-block">
+    <div class="card" style="width: 18rem;">
+  <img src="{% static 'students/images/'|add:std.image %}" width="200" height="200" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{std.name}}</h5>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+    </div>
+{% endfor %}
+
 
 {% endblock %}

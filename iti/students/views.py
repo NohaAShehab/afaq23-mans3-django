@@ -26,5 +26,11 @@ def muliplywithten(request , num):
 
 
 def home(request):
-    return  render(request, 'home.html')
+    students = [
+        {"id":1, "name":'Noha', "image":"pic1.jpg"},
+        {"id": 2, "name": 'Salma', "image": "pic2.png"},
+        {"id": 3, "name": 'Norhan', "image": "pic3.png"}
+    ]
+    return  render(request, 'home.html' ,
+                   context = {"name":"noha", 'students':students})
 

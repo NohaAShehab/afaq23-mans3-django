@@ -6,3 +6,17 @@ create category for each product
 - modify product model to allow image upload
 
 - perfrom all crud operations create, show , edit , delete, list all
+
+
+1- get object I want to edit
+2- send to to the template  (display old data)
+3- when submit updated data to the view
+4- save updated data to the existing object
+
+
+def edit(request, id):
+    prd = Product.objects.get(id=id)
+    if request.POST:
+        prd= ;
+
+    return render(request, '', context ={'product':prd})

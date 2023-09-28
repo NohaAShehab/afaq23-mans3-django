@@ -15,3 +15,9 @@ send data to the server ---> use method post
 to create student ===> upload image to the server
 --> models -- > provide datatype Image field
 models.ImageField(upload_to='')
+
+
+######## relations between models?
+
+student study at one track
+track has many students

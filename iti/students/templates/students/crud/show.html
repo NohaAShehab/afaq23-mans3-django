@@ -10,6 +10,7 @@
         <img src="{{student.get_image_url}}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{student.name}}</h5>
+             <h4 class="card-title">Track: {{student.track}}, {{student.track.created_at}}</h4>
             <p class="card-text">age: {{student.age}}</p>
             <p class="card-text">Created at: {{student.created_at}}</p>
             <p class="card-text">Updated ar: {{student.updated_at}}</p>

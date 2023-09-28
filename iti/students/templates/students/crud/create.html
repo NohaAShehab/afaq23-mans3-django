@@ -23,6 +23,17 @@
             <label class="form-label">Image</label>
             <input type="file" name="image" class="form-control" aria-describedby="emailHelp">
         </div>
+         <div class="mb-3">
+            <label class="form-label">Track</label>
+               <select class="form-select" aria-label="Default select example" name="track_id">
+                <option selected disabled value="">Open this select menu</option>
+                   {% for track in tracks %}
+                   <option value="{{track.id}}">{{track.name}}</option>
+                   {% endfor %}
+
+
+            </select>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

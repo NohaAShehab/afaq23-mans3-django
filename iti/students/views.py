@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 # function accepts http request and returns http response
 
-from students.models import Student
+from students.models import Student, Track
 def helloworld(request):
     return HttpResponse('Hello world')
 
@@ -76,10 +76,17 @@ def create(request):
             image = request.FILES['image']
         else:
             image = None
-        student =Student(name=request.POST['name'], email=request.POST['email'], image=image, age=request.POST['age'])
+
+        track= None
+        if 'track_id' in request.POST:
+            track = Track.get_specific_track(request.POST['track_id'])
+
+        student =Student(name=request.POST['name'], email=request.POST['email'], image=image, age=request.POST['age'], track=track)
         student.save()
         url = reverse('students.index')
         return redirect(url)
 
-    return render(request, 'students/crud/create.html')
+
+    tracks = Track.get_all_tracks()
+    return render(request, 'students/crud/create.html', context={"tracks":tracks})
 

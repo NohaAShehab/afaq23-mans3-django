@@ -6,6 +6,8 @@ from django.http import HttpResponse
 # views --> functions
 
 # function accepts http request and returns http response
+
+from students.models import Student
 def helloworld(request):
     return HttpResponse('Hello world')
 
@@ -42,3 +44,17 @@ def show(request, id):
     # print(list(stds)[0])
     std = list(stds)[0]
     return  render(request, 'students/show.html', context={"student":std})
+
+
+
+def index(request):
+    # get all students
+    # student = Student.objects.all()
+    students = Student.get_all_students()
+    return render(request, 'students\crud\index.html', context={"students":students})
+
+
+
+def details(request, id):
+    student = Student.get_specific_student(id)
+    return render(request, 'students\crud\show.html', context={"student":student})

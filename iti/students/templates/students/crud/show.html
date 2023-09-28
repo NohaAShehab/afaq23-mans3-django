@@ -4,13 +4,13 @@
 
 {% block content %}
 <div class="bg-light">
-    <h1> Student {{student.name}}  Info </h1>
+    <h1> Student {{student.name}} Info </h1>
 
     <div class="card" style="width: 18rem;">
         <img src="{{student.get_image_url}}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{student.name}}</h5>
-             <h4 class="card-title">Track: {{student.track}}, {{student.track.created_at}}</h4>
+            <h4 class="card-title">Track: {{student.track}}, {{student.track.created_at}}</h4>
             <p class="card-text">age: {{student.age}}</p>
             <p class="card-text">Created at: {{student.created_at}}</p>
             <p class="card-text">Updated ar: {{student.updated_at}}</p>
@@ -18,4 +18,15 @@
         </div>
     </div>
 </div>
+
+<h1> Students in the {{student.track}} track </h1>
+<!--    {{student.track.students.all}}-->
+{% for std in student.track.students.all %}
+{% if std.id != student.id %}
+<li><a href="{{std.get_show_url}}">{{std.name}}</a></li>
+{% endif %}
+
+{% endfor %}
+
 {% endblock %}
+

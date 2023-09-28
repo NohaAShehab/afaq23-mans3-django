@@ -1,0 +1,8 @@
+
+create category for each product
+-product can be only one category-
+
+
+- modify product model to allow image upload
+
+- perfrom all crud operations create, show , edit , delete, list all

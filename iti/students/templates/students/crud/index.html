@@ -3,7 +3,7 @@
 
 {% block body %}
 <div class="bg-light">
-    <a href="{% url 'students.create' %}" class=" btn btn-dark"> Add new Student  </a>
+    <a href="{% url 'students.create' %}" class=" btn btn-dark"> Add new Student </a>
 
     <h2> All Students </h2>
 
@@ -17,7 +17,7 @@
                  alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{student.name}}</h5>
-<!--                {{student.image}}-->
+                <!--                {{student.image}}-->
                 <a href="{{student.get_show_url}}" class="btn btn-primary">Show</a>
                 <a href="{{student.get_delete_url}}" class="btn btn-danger">Delete</a>
             </div>

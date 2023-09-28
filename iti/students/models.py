@@ -26,8 +26,8 @@ class Student(models.Model):
     name= models.CharField(max_length=100)
     age = models.IntegerField(default=10,null=True)
     email = models.EmailField(max_length=100, null=True, unique=True)
-    image = models.ImageField(upload_to='students/images/', null=True)
-    track = models.ForeignKey(Track, null=True, blank=True, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='students/images/', null=True, blank=True)
+    track = models.ForeignKey(Track, null=True, blank=True, on_delete=models.CASCADE, related_name='students')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

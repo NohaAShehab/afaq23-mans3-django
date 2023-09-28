@@ -3,29 +3,32 @@
 
 {% block body %}
 <div class="bg-light">
-<h2> All courses </h2>
-<!--{{courses}}-->
+    <a href="{% url 'courses.create'%}" class=" btn btn-dark"> Add new Course  </a>
 
-  {% for course in courses %}
+    <h2> All courses </h2>
 
-<div style="display:inline-block">
-    <div class="card" style="width: 18rem;">
-  <img src="{% static 'courses/images/'|add:course.image %}" width="200" height="200" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{course.name}}</h5>
-    <a href="{% url 'courses.show' course.id %}" class="btn btn-primary">Show</a>
-      <a href="{% url 'courses.delete' course.id %}" class="btn btn-danger">Delete</a>
-  </div>
-</div>
+    <!--{{courses}}-->
+
+    {% for course in courses %}
+
+    <div style="display:inline-block">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'courses/images/'|add:course.image %}" width="200" height="200" class="card-img-top"
+                 alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{course.name}}</h5>
+                <a href="{% url 'courses.show' course.id %}" class="btn btn-primary">Show</a>
+                <a href="{% url 'courses.delete' course.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
     </div>
 
-   {% endfor %}
-{% endblock %}
+    {% endfor %}
+    {% endblock %}
 </div>
 {% block content %}
-  <h1 > This is courses home page </h1>
+<h1> This is courses home page </h1>
 {% endblock %}
-
 
 
 <h3> after the blocks </h3>

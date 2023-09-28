@@ -1,0 +1,11 @@
+
+
+add new course
+
+form ---
+
+get  ---> send data --> request param in url
+post ---> send data  --> request bodg
+
+
+send data to the server ---> use method post

@@ -1,0 +1,27 @@
+{% extends 'students/layouts/base.html'  %}
+{% load static %}
+{% block title %}  Add new Course  {% endblock %}
+
+{% block content %}
+<div class="bg-light">
+    <h1> Add new Course </h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" name='name' class="form-control" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Image</label>
+            <input type="text" name="image" class="form-control" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Max grade</label>
+            <input type="number" name="max_grade" class="form-control" aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+{% endblock %}

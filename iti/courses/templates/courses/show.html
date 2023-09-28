@@ -4,17 +4,17 @@
 
 {% block content %}
 <div class="bg-light">
-   <h1> Course Info </h1>
+    <h1> Course Info </h1>
 
     <div class="card" style="width: 18rem;">
-  <img src="{% static 'courses/images/'|add:course.image%}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{course.name}}</h5>
-    <p class="card-text">Grade: {{course.max_grade}}</p>
-      <p class="card-text">Created at: {{course.created_at}}</p>
-      <p class="card-text">Updated ar: {{course.updated_at}}</p>
-    <a href="{% url 'courses.home'%}" class="btn btn-primary">Back to all courses</a>
-  </div>
-</div>
+        <img src="{% static 'courses/images/'|add:course.image%}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{course.name}}</h5>
+            <p class="card-text">Grade: {{course.max_grade}}</p>
+            <p class="card-text">Created at: {{course.created_at}}</p>
+            <p class="card-text">Updated ar: {{course.updated_at}}</p>
+            <a href="{% url 'courses.home'%}" class="btn btn-primary">Back to all courses</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.urls import path
 
-from students.views import  helloworld, welcome, sayhi, muliplywithten, home,show, index, details
+from students.views import  (helloworld, welcome, sayhi, muliplywithten, home,show,
+                             index, details, delete, create)
 urlpatterns = [
     path('hello/', helloworld, name='myhello'),
     path('mywelcome/', welcome, name='welcome'),
@@ -9,7 +10,9 @@ urlpatterns = [
     path('home/',home, name='home' ),
     path('<int:id>',show, name='students.show' ),
     path('',index,name='students.index' ),
-    path('<int:id>/details',details, name='students.details' )
+    path('<int:id>/details',details, name='students.details' ),
+    path('<int:id>/delete',delete, name='students.delete' ),
+    path('create',create, name='students.create' )
 
     
 ]

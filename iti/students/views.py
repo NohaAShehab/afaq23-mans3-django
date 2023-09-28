@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,reverse, redirect
 from django.http import HttpResponse
 
 # Create your views here.
@@ -58,3 +58,28 @@ def index(request):
 def details(request, id):
     student = Student.get_specific_student(id)
     return render(request, 'students\crud\show.html', context={"student":student})
+
+
+def delete(request, id):
+    student = Student.get_specific_student(id)
+    student.delete()
+    url = reverse('students.index')
+    return redirect(url)
+
+
+
+def create(request):
+    if request.method == 'POST':
+        print(request.POST)
+        print(request.FILES)
+        if 'image' in request.FILES:
+            image = request.FILES['image']
+        else:
+            image = None
+        student =Student(name=request.POST['name'], email=request.POST['email'], image=image, age=request.POST['age'])
+        student.save()
+        url = reverse('students.index')
+        return redirect(url)
+
+    return render(request, 'students/crud/create.html')
+

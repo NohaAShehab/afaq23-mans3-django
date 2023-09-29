@@ -1,0 +1,28 @@
+{% extends 'students/layouts/base.html'  %}
+{% load static %}
+{% block title %}  Add new Post  {% endblock %}
+
+{% block content %}
+<div class="bg-light">
+    <h1> All posts </h1>
+    <a href="{% url 'posts.create'%}" class="btn btn-outline-dark"> Add new Post </a>
+
+<!--    {{object_list}}-->
+
+    {% for post in posts %}
+
+    <div style="display:inline-block">
+        <div class="card" style="width: 18rem;">
+            <img src="{{post.get_image_url}}" width="200" height="200" class="card-img-top"
+                 alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <a href="{{post.get_show_url}}" class="btn btn-primary">Show</a>
+                <a href="{{post.get_edit_url}}" class="btn btn-warning">Edit</a>
+                <a href="{{post.get_delete_url}}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

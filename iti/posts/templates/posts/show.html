@@ -1,0 +1,32 @@
+{% extends 'students/layouts/base.html'  %}
+{% load static %}
+{% block title %} Post Info {% endblock %}
+
+{% block content %}
+<div class="bg-light">
+    <h1> Post {{posts.title}} Info </h1>
+
+    <div class="card" style="width: 18rem;">
+        <img src="{{post.get_image_url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <h4 class="card-title">Author: {{post.author}}</h4>
+            <p class="card-text">Body: {{post.body}}</p>
+            <p class="card-text">Created at: {{post.created_at}}</p>
+            <p class="card-text">Updated ar: {{post.updated_at}}</p>
+            <a href="{% url 'posts.index'%}" class="btn btn-primary">Back to all posts</a>
+        </div>
+    </div>
+</div>
+
+<h1> Posts by the author </h1>
+<!--    {{student.track.students.all}}-->
+{% for p in post.author.posts.all %}
+{% if p.id != post.id %}
+<li><a href="{{p.get_show_url}}">{{p.title}}</a></li>
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}
+

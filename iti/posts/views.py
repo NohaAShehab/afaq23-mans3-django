@@ -1,9 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.views import View
 from posts.forms import PostModelForm
 from posts.models import Post
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 
@@ -31,9 +32,38 @@ class CreatePostView(View):
 class CreatePostGenericView(CreateView):
     form_class =  PostModelForm
     template_name =  'posts/create.html'
-    redirect_url = '/'
+    success_url = '/'
+
+
+class PostListGenericView(ListView):
+    model = Post
+    template_name = 'posts/index.html'
+    context_object_name = 'posts'
+
+    def queryset(self):
+        return  Post.objects.filter(id__gt=7)
+
+# create view to display all posts ?
+
+
+class PostDetailGenericView(DetailView):
+    model = Post
+    template_name = 'posts/show.html'
+
+
+
+class UpdatePostGenericView(UpdateView):
+    model = Post
+    form_class = PostModelForm
+    template_name = 'posts/edit.html'
+    # success_url = reverse('posts.index')
+    success_url = '/posts/'
 
 
 
 
+class DeletePostGenericView(DeleteView):
+    model = Post
+    template_name = 'posts/delete.html'
+    success_url = '/posts/'
 

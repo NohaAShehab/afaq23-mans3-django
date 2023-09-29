@@ -50,3 +50,7 @@ class Student(models.Model):
 
     def get_delete_url(self):
         return reverse('students.delete',args=[self.id])
+
+
+    def get_edit_url(self):
+        return reverse('students.edit',args=[self.id])

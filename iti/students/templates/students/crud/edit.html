@@ -1,0 +1,21 @@
+{% extends 'students/layouts/base.html'  %}
+{% load static %}
+{% block title %}  Edit Student  {% endblock %}
+
+{% block content %}
+<div class="bg-light">
+    <h1>Edit Student using forms : {{form.name.value}} </h1>
+      <img  src="{{image}}" width="100", height="100">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form}}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+</div>
+<script src="{% static 'students/js/script.js'%}"> </script>
+{% endblock %}

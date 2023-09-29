@@ -8,6 +8,8 @@ from django.http import HttpResponse
 # function accepts http request and returns http response
 
 from students.models import Student, Track
+
+from students.forms import StudentForm, StudentModelForm
 def helloworld(request):
     return HttpResponse('Hello world')
 
@@ -69,9 +71,17 @@ def delete(request, id):
 
 
 def create(request):
+    tracks = Track.get_all_tracks()
     if request.method == 'POST':
         print(request.POST)
         print(request.FILES)
+
+
+        ## validation part
+        if request.POST['name']=='' or request.POST['age']=='' or request.POST['email']=='' :
+            return render(request, 'students/crud/create.html', context={"tracks":tracks})
+
+
         if 'image' in request.FILES:
             image = request.FILES['image']
         else:
@@ -87,6 +97,67 @@ def create(request):
         return redirect(url)
 
 
-    tracks = Track.get_all_tracks()
+
     return render(request, 'students/crud/create.html', context={"tracks":tracks})
+
+
+
+
+
+def createViaForm(request):
+    form  = StudentForm()
+    #1- import form --> and take an object
+    if request.method == 'POST':
+        print(request.POST)
+        print(request.FILES)
+        form = StudentForm(request.POST, request.FILES)
+        if form.is_valid():
+            if 'image' in request.FILES:
+                image = request.FILES['image']
+            else:
+                image = None
+
+            track = None
+            if 'track_id' in request.POST:
+                track = Track.get_specific_track(request.POST['track_id'])
+
+            student = Student(name=request.POST['name'], email=request.POST['email'], image=image,
+                              age=request.POST['age'], track=track)
+            student.save()
+            url = reverse('students.index')
+            return redirect(url)
+
+        print(form.errors)
+        return render(request, 'students/crud/createusingform.html', context={"form":form})
+
+
+    return render(request, 'students/crud/createusingform.html', context={"form":form})
+
+
+
+
+
+def createViaModelForm(request):
+    form  = StudentModelForm()
+    if request.method == 'POST':
+        form  = StudentModelForm( request.POST, request.FILES)
+        if form.is_valid():
+            # return HttpResponse("form valid")
+            form.save() # ask form to create new object from the given model
+            url = reverse('students.index')
+            return redirect(url)
+
+        return render(request, 'students/crud/createusingform.html', context={"form": form})
+
+
+    return render(request, 'students/crud/createusingform.html', context={"form":form})
+
+
+
+
+def edit(request, id):
+    student = Student.get_specific_student(id)
+    form = StudentModelForm(instance=student)
+
+    return render(request, 'students/crud/edit.html', context={"form": form, "image":student.get_image_url})
 

@@ -2,3 +2,17 @@
 
 "use django forms "
 
+
+
+Lab:
+apply classed views and forms on categories
+
+create
+update
+delete
+index
+show
+
+
+apply category can be created only if user is logged in
+add property to category owner ==> logged_in user

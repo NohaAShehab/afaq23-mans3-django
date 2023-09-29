@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, reverse
 from courses.models import Course
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -19,6 +20,7 @@ def show(request, course_id):
     return render(request, 'courses/show.html', {'course': course})
 
 
+@login_required()
 def delete(request, course_id):
     course = Course.objects.get(id=course_id)
     course.delete()
@@ -28,7 +30,7 @@ def delete(request, course_id):
     return redirect(bact_to_url)
 
 
-
+@login_required()
 def create(request):
     print(request)
     if request.method == 'POST':

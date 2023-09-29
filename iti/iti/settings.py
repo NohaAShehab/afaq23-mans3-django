@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
     'django_cleanup.apps.CleanupConfig',
-    'posts.apps.PostsConfig'
+    'posts.apps.PostsConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'iti.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

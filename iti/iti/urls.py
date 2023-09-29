@@ -31,6 +31,7 @@ urlpatterns = [
     # please include students urls here
     path('students/', include('students.urls')),
     path('courses/', include('courses.urls')),
-    path('posts/',include('posts.urls'))
+    path('posts/',include('posts.urls')),
+    path('accounts/', include('accounts.urls'))
 
 ]+ static(settings.MEDIA_URL,  document_root=settings.MEDIA_ROOT)
